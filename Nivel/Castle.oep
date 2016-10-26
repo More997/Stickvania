@@ -56,7 +56,7 @@
   <Tilesets>
     <Tileset>
       <Name>suelo</Name>
-      <FilePath>..\suelo.png</FilePath>
+      <FilePath>suelo (1).png</FilePath>
       <TileSize>
         <Width>16</Width>
         <Height>16</Height>
@@ -65,7 +65,7 @@
     </Tileset>
     <Tileset>
       <Name>fondo</Name>
-      <FilePath>..\fondo castle (1).png</FilePath>
+      <FilePath>fondo castle (3).png</FilePath>
       <TileSize>
         <Width>16</Width>
         <Height>16</Height>
