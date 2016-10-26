@@ -14,8 +14,8 @@ class Player extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		loadGraphic(AssetPaths.stik__png, true, 24, 46);
-		animation.add("caminaD", [1, 2, 3, 4, 5, 6], 5, true);
-		animation.add("caminaI", [1, 2, 3, 4, 5, 6], 5, true, true);
+		animation.add("caminaD", [1, 2, 3, 4, 5], 5, true);
+		animation.add("caminaI", [1, 2, 3, 4, 5], 5, true, true);
 		animation.add("quieto", [0], 1);
 		acceleration.y = Reg.vAccel;
 	}

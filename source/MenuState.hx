@@ -4,6 +4,8 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import sprites.Enemigos;
+import flixel.tile.FlxTilemap;
+import flixel.addons.editors.ogmo.FlxOgmoLoader;
 import sprites.Player;
 
 class MenuState extends FlxState
@@ -11,18 +13,22 @@ class MenuState extends FlxState
 	private var personaje:Player;
 	private var enemigo1:Enemigos;
 	private var platform:FlxSprite;
+	private var mapa:FlxTilemap;
+	
 	
 	override public function create():Void
 	{
 		super.create();
 		FlxG.mouse.visible = false;
-		
+		var load = new FlxOgmoLoader(AssetPaths.Caste__oel);
+		mapa = load.loadTilemap(AssetPaths.suelo__png, 32, 32, "suelo");
 		platform = new FlxSprite(0, 200);
 		platform.makeGraphic(FlxG.width, 32, 0xFF00FFFF);
 		platform.immovable = true;
 		personaje = new Player(100, 100);
 		enemigo1 = new Enemigos(200, 100);
 		add(platform);
+		add(mapa);
 		add(personaje);
 		add(enemigo1);
 	}
