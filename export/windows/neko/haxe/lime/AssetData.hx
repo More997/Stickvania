@@ -18,10 +18,14 @@ class AssetData {
 			
 			path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
 			type.set ("assets/data/data-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/images/axe.png", "assets/images/axe.png");
+			type.set ("assets/images/axe.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/E1.png", "assets/images/E1.png");
 			type.set ("assets/images/E1.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 			type.set ("assets/images/images-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/images/Lazo.png", "assets/images/Lazo.png");
+			type.set ("assets/images/Lazo.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/stik ata axe.png", "assets/images/stik ata axe.png");
 			type.set ("assets/images/stik ata axe.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/stik.png", "assets/images/stik.png");
@@ -30,14 +34,14 @@ class AssetData {
 			type.set ("assets/images/stikjump.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 			type.set ("assets/music/music-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
-			path.set ("assets/Nivel/axe.png", "assets/Nivel/axe.png");
-			type.set ("assets/Nivel/axe.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/Nivel/Caste.oel", "assets/Nivel/Caste.oel");
 			type.set ("assets/Nivel/Caste.oel", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/Nivel/Castle.oep", "assets/Nivel/Castle.oep");
 			type.set ("assets/Nivel/Castle.oep", Reflect.field (AssetType, "text".toUpperCase ()));
-			path.set ("assets/Nivel/fondo castle.png", "assets/Nivel/fondo castle.png");
-			type.set ("assets/Nivel/fondo castle.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/Nivel/fondo_castle.png", "assets/Nivel/fondo_castle.png");
+			type.set ("assets/Nivel/fondo_castle.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/Nivel/fondo_castle_clone.png", "assets/Nivel/fondo_castle_clone.png");
+			type.set ("assets/Nivel/fondo_castle_clone.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/Nivel/suelo.png", "assets/Nivel/suelo.png");
 			type.set ("assets/Nivel/suelo.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");

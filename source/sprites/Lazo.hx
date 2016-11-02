@@ -21,11 +21,11 @@ class Lazo extends FlxSprite
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		if (FlxG.keys.pressed.L)
+		if (FlxG.keys.p.ressed.L)
 		{   if(personaje.velocity.x >=0)
-			animation.play("attackD");
+				animation.play("attackD");
 			else if (personaje.velocity.x < 0)
-			animation.play("attackI");
+				animation.play("attackI");
 		}
 		
 	}

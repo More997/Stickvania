@@ -71,6 +71,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		Font.registerFont (__ASSET__flixel_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__flixel_fonts_monsterrat_ttf);
 		
@@ -80,6 +82,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -609,6 +613,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
@@ -620,10 +626,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		path.set ("assets/images/axe.png", "assets/images/axe.png");
+		type.set ("assets/images/axe.png", AssetType.IMAGE);
 		path.set ("assets/images/E1.png", "assets/images/E1.png");
 		type.set ("assets/images/E1.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		path.set ("assets/images/Lazo.png", "assets/images/Lazo.png");
+		type.set ("assets/images/Lazo.png", AssetType.IMAGE);
 		path.set ("assets/images/stik ata axe.png", "assets/images/stik ata axe.png");
 		type.set ("assets/images/stik ata axe.png", AssetType.IMAGE);
 		path.set ("assets/images/stik.png", "assets/images/stik.png");
@@ -632,14 +642,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/stikjump.png", AssetType.IMAGE);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
-		path.set ("assets/Nivel/axe.png", "assets/Nivel/axe.png");
-		type.set ("assets/Nivel/axe.png", AssetType.IMAGE);
 		path.set ("assets/Nivel/Caste.oel", "assets/Nivel/Caste.oel");
 		type.set ("assets/Nivel/Caste.oel", AssetType.TEXT);
 		path.set ("assets/Nivel/Castle.oep", "assets/Nivel/Castle.oep");
 		type.set ("assets/Nivel/Castle.oep", AssetType.TEXT);
-		path.set ("assets/Nivel/fondo castle.png", "assets/Nivel/fondo castle.png");
-		type.set ("assets/Nivel/fondo castle.png", AssetType.IMAGE);
+		path.set ("assets/Nivel/fondo_castle.png", "assets/Nivel/fondo_castle.png");
+		type.set ("assets/Nivel/fondo_castle.png", AssetType.IMAGE);
+		path.set ("assets/Nivel/fondo_castle_clone.png", "assets/Nivel/fondo_castle_clone.png");
+		type.set ("assets/Nivel/fondo_castle_clone.png", AssetType.IMAGE);
 		path.set ("assets/Nivel/suelo.png", "assets/Nivel/suelo.png");
 		type.set ("assets/Nivel/suelo.png", AssetType.IMAGE);
 		path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
@@ -664,12 +674,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/data/data-goes-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/axe.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/E1.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/images-go-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/Lazo.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/stik ata axe.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -682,16 +698,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/music/music-goes-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
-		id = "assets/Nivel/axe.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
 		id = "assets/Nivel/Caste.oel";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		id = "assets/Nivel/Castle.oep";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
-		id = "assets/Nivel/fondo castle.png";
+		id = "assets/Nivel/fondo_castle.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/Nivel/fondo_castle_clone.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/Nivel/suelo.png";
@@ -741,6 +757,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1503,6 +1521,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_beep_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends null { }
@@ -1512,6 +1532,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 #elseif html5
+
+
 
 
 

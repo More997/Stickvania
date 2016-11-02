@@ -53,7 +53,18 @@ class Player extends FlxSprite
 		}
 		if (velocity.x == 0 && isTouching(FlxObject.FLOOR))
 			animation.play("quieto");
-
+		
+		if (FlxG.keys.pressed.L)
+		{   if  (velocity.x >=0)
+				animation.play("attackD");
+			else if (velocity.x < 0)
+				animation.play("attackI");
+				if (FlxG.keys.pressed.W && !isTouching(FlxObject.FLOOR))
+				if (velocity.x < 0)
+					animation.play("attackupI");
+				else if (velocity.x >= 0)
+					animation.play("attackupD");
+		}
 			
 		super.update(elapsed);
 	}
