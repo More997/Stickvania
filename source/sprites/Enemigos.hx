@@ -16,6 +16,8 @@ class Enemigos extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		loadGraphic(AssetPaths.E1__png, true, 16, 16);
 		scale.set(2, 2);
+		setSize(32, 32);
+		centerOffsets();
 		animation.add("caminaI", [0,1], 3, true);
 		animation.add("caminaD", [0,1], 3, true, true);
 		animation.play("caminaI");

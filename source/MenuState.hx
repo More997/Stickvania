@@ -12,23 +12,23 @@ class MenuState extends FlxState
 {
 	private var personaje:Player;
 	private var enemigo1:Enemigos;
-	private var platform:FlxSprite;
-	private var mapa:FlxTilemap;
+	private var _Suelo:FlxTilemap;
+	private var _Fondo:FlxTilemap;
+	private var _Load:FlxOgmoLoader;
 	
 	
 	override public function create():Void
 	{
 		super.create();
 		FlxG.mouse.visible = false;
-		var load = new FlxOgmoLoader(AssetPaths.Caste__oel);
-		mapa = load.loadTilemap(AssetPaths.suelo__png, 32, 32, "suelo");
-		platform = new FlxSprite(0, 200);
-		platform.makeGraphic(FlxG.width, 32, 0xFF00FFFF);
-		platform.immovable = true;
+		_Load = new FlxOgmoLoader(AssetPaths.Caste__oel);
+		_Fondo = _Load.loadTilemap(AssetPaths.fondo_castle__png, 64,240, "fondo");
+		_Suelo = _Load.loadTilemap(AssetPaths.suelo__png, 16, 16, "suelo");
+		_Suelo.immovable = true;
 		personaje = new Player(100, 100);
 		enemigo1 = new Enemigos(200, 100);
-		add(platform);
-		add(mapa);
+		add(_Fondo);
+		add(_Suelo);
 		add(personaje);
 		add(enemigo1);
 	}
@@ -36,7 +36,7 @@ class MenuState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		FlxG.collide(platform, personaje);
-		FlxG.collide(platform, enemigo1);
+		FlxG.collide(_Suelo, personaje);
+		FlxG.collide(_Suelo, enemigo1);
 	}
 }

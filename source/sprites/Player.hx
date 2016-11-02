@@ -22,7 +22,6 @@ class Player extends FlxSprite
 		animation.add("attackD", [9, 10, 11],2);
 		animation.add("attackI", [9, 10, 11], 2, false, true);
 		animation.add("attackupD", [6, 7, 8], 2);
-		animation.
 		acceleration.y = Reg.vAccel;
 	}
 	override public function update(elapsed:Float):Void
