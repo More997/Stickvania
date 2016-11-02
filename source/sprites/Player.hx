@@ -16,7 +16,9 @@ class Player extends FlxSprite
 		loadGraphic(AssetPaths.stik__png, true, 24, 46);
 		animation.add("caminaD", [1, 2, 3, 4, 5], 5, true);
 		animation.add("caminaI", [1, 2, 3, 4, 5], 5, true, true);
-		animation.add("quieto", [0], 1);
+		animation.add("saltaD", [13, 14, 15], 2);
+		animation.add("saltaI", [13, 14, 15], 2, false, true);
+		animation.add("quieto", [12], 1);
 		acceleration.y = Reg.vAccel;
 	}
 	override public function update(elapsed:Float):Void
@@ -24,7 +26,14 @@ class Player extends FlxSprite
 		if (isTouching(FlxObject.FLOOR))
 			velocity.x = 0;
 		if (FlxG.keys.justPressed.W && isTouching(FlxObject.FLOOR))
+		{
 			velocity.y = Reg.vSpeed;
+			if (FlxG.keys.justPressed.W)
+			{
+			animation.play("saltaD");
+			}
+			
+		}
 		if (FlxG.keys.pressed.A && isTouching(FlxObject.FLOOR))
 			{
 				velocity.x -= Reg.hSpeed;
