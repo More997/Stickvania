@@ -31,6 +31,9 @@ class MenuState extends FlxState
 		add(_Suelo);
 		add(personaje);
 		add(enemigo1);
+		FlxG.camera.setScrollBounds(0, _Fondo.width, 0, _Fondo.height);//Rango de movilidad de la camara(Todo el nivel)
+		FlxG.worldBounds.set(0, 0, _Fondo.width, _Fondo.height);//setear el tamaño total del nivel con los datos de ogmo.
+		FlxG.camera.follow(personaje);//La camara se centra en el jugador.
 	}
 
 	override public function update(elapsed:Float):Void
