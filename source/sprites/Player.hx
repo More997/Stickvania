@@ -16,7 +16,7 @@ class Player extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		loadGraphic(AssetPaths.stik__png, true, 24, 46);
 		animation.add("caminar", [1, 2, 3, 4, 5], 5, true);
-		animation.add("saltar", [13, 14, 15], 4, false);
+		animation.add("saltar", [14, 15], 4, false);
 		animation.add("quieto", [12], 1);
 		animation.add("attack", [9, 10, 11], 7, false);
 		animation.add("attackUp", [6, 7, 8], 7, false);

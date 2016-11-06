@@ -38,6 +38,8 @@ class AssetData {
 			type.set ("assets/Nivel/Caste.oel", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/Nivel/Castle.oep", "assets/Nivel/Castle.oep");
 			type.set ("assets/Nivel/Castle.oep", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/Nivel/escalera.png", "assets/Nivel/escalera.png");
+			type.set ("assets/Nivel/escalera.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/Nivel/fondo_castle.png", "assets/Nivel/fondo_castle.png");
 			type.set ("assets/Nivel/fondo_castle.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/Nivel/fondo_castle_clone.png", "assets/Nivel/fondo_castle_clone.png");
@@ -56,8 +58,6 @@ class AssetData {
 			type.set ("flixel/fonts/monsterrat.ttf", Reflect.field (AssetType, "font".toUpperCase ()));
 			path.set ("flixel/images/ui/button.png", "flixel/images/ui/button.png");
 			type.set ("flixel/images/ui/button.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("flixel/images/logo/default.png", "flixel/images/logo/default.png");
-			type.set ("flixel/images/logo/default.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			
 			
 			initialized = true;
