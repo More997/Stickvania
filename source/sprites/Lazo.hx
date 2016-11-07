@@ -14,19 +14,18 @@ class Lazo extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		loadGraphic(AssetPaths.Lazo__png, true, 32, 32);
-		animation.add("attack", [0, 1, 2, 2], 7, true);
+		animation.add("attack", [2], 1);
 	}
 	
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
 		//velocity.x += mov;
-		/*if (animation.frameIndex == 0)
+		if (!animation.finished)
 		{
-			x -= 5;
-			y += 15;
-		}*/	
-
+			animation.stop();
+			kill();
+		}
 	}
 	
 }

@@ -18,19 +18,19 @@ class Player extends FlxSprite
 		animation.add("caminar", [1, 2, 3, 4, 5], 5, true);
 		animation.add("saltar", [14, 15], 4, false);
 		animation.add("quieto", [12], 1);
-		animation.add("attack", [9, 10, 11], 7, false);
-		animation.add("attackUp", [6, 7, 8], 7, false);
+		animation.add("attack", [9, 10, 11], 5, false);
+		animation.add("attackUp", [6, 7, 8], 5, false);
 		acceleration.y = Reg.vAccel;
 	}
 	override public function update(elapsed:Float):Void
 	{
 		if (isTouching(FlxObject.FLOOR))
 			velocity.x = 0;
-		if (FlxG.keys.justPressed.A && isTouching(FlxObject.FLOOR))//para que no invierta la animacion en el aire.
+		if (FlxG.keys.justPressed.A && isTouching(FlxObject.FLOOR) && animation.name != "attack" && animation.name != "attackUp")//para que no invierta la animacion en el aire.
 			flipX = true;//Si apretas A va a invertir todo el sprite (no hace falta incluir los sprites de izq)
-		if (FlxG.keys.justPressed.D && isTouching(FlxObject.FLOOR))//para que no invierta la animacion en el aire.
+		if (FlxG.keys.justPressed.D && isTouching(FlxObject.FLOOR) && animation.name != "attack" && animation.name != "attackUp")//para que no invierta la animacion en el aire.
 			flipX = false;//Necesario para poner el sprite como estaba si es que se apreto A antes.
-		if (FlxG.keys.justPressed.W && isTouching(FlxObject.FLOOR)){
+		if (FlxG.keys.justPressed.W && isTouching(FlxObject.FLOOR) && animation.name != "attack" && animation.name != "attackUp"){
 			velocity.y = Reg.vSpeed;}
 		if (FlxG.keys.pressed.A && isTouching(FlxObject.FLOOR) && animation.name != "attack" && animation.name != "attackUp")
 		{//el personaje no va a poder caminar saltar ni estar en "quieto" mientras este atacando.

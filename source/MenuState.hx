@@ -26,7 +26,7 @@ class MenuState extends FlxState
 		_Lazo = new Lazo();
 		guiaCamara = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		_Load = new FlxOgmoLoader(AssetPaths.Caste__oel);
-		_Fondo = _Load.loadTilemap(AssetPaths.fondo_castle__png, 64,240, "fondo");
+		_Fondo = _Load.loadTilemap(AssetPaths.fondogrande__png, 75,240, "fondo");
 		_Suelo = _Load.loadTilemap(AssetPaths.suelo__png, 16, 16, "suelo");
 		_Suelo.immovable = true;
 		personaje = new Player(100, 100);
@@ -45,19 +45,34 @@ class MenuState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		if (FlxG.keys.justPressed.L)
+
+		if (personaje.animation.frameIndex == 11)
 		{
 			_Lazo.revive();
 			_Lazo.animation.play("attack");
 		}
 		guiaCamara.x = personaje.x;
 		if (_Lazo.alive)
+		{
 			posLazo(personaje.x, personaje.y);
+			if (FlxG.collide(_Lazo, enemigo1))
+				enemigo1.destroy();
+		}
 		FlxG.collide(_Suelo, personaje);
 		FlxG.collide(_Suelo, enemigo1);
 	}
 	public function posLazo(X:Float, Y:Float) {
-		_Lazo.x = X;
-		_Lazo.y = Y;
+		if (personaje.flipX == true)
+		{
+			_Lazo.flipX = true;
+			_Lazo.x = X-personaje.width-4;
+			_Lazo.y = Y + 9;
+		}
+		else
+		{
+			_Lazo.flipX = false;
+			_Lazo.x = X+personaje.width-4;
+			_Lazo.y = Y + 9;
+		}
 	}
 }
