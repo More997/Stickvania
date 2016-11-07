@@ -16,7 +16,7 @@
     <Width>5120</Width>
     <Height>480</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\118\Desktop\Stickvania\assets\Nivel\Castle.oep</Filename>
+  <Filename>C:\Users\826\Desktop\Stickvania\assets\Nivel\Castle.oep</Filename>
   <AngleMode>Radians</AngleMode>
   <CameraEnabled>true</CameraEnabled>
   <CameraSize>
@@ -29,6 +29,18 @@
   </LevelValueDefinitions>
   <LayerDefinitions>
     <LayerDefinition xsi:type="TileLayerDefinition">
+      <Name>fondo</Name>
+      <Grid>
+        <Width>75</Width>
+        <Height>500</Height>
+      </Grid>
+      <ScrollFactor>
+        <X>1</X>
+        <Y>1</Y>
+      </ScrollFactor>
+      <ExportMode>CSV</ExportMode>
+    </LayerDefinition>
+    <LayerDefinition xsi:type="TileLayerDefinition">
       <Name>suelo</Name>
       <Grid>
         <Width>16</Width>
@@ -41,34 +53,10 @@
       <ExportMode>CSV</ExportMode>
     </LayerDefinition>
     <LayerDefinition xsi:type="TileLayerDefinition">
-      <Name>fondo</Name>
+      <Name>lava</Name>
       <Grid>
-        <Width>64</Width>
-        <Height>240</Height>
-      </Grid>
-      <ScrollFactor>
-        <X>1</X>
-        <Y>1</Y>
-      </ScrollFactor>
-      <ExportMode>CSV</ExportMode>
-    </LayerDefinition>
-    <LayerDefinition xsi:type="TileLayerDefinition">
-      <Name>fondo2</Name>
-      <Grid>
-        <Width>64</Width>
-        <Height>240</Height>
-      </Grid>
-      <ScrollFactor>
-        <X>1</X>
-        <Y>1</Y>
-      </ScrollFactor>
-      <ExportMode>CSV</ExportMode>
-    </LayerDefinition>
-    <LayerDefinition xsi:type="TileLayerDefinition">
-      <Name>escalera</Name>
-      <Grid>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>23</Height>
       </Grid>
       <ScrollFactor>
         <X>1</X>
@@ -79,6 +67,15 @@
   </LayerDefinitions>
   <Tilesets>
     <Tileset>
+      <Name>fondo</Name>
+      <FilePath>fondogrande.png</FilePath>
+      <TileSize>
+        <Width>75</Width>
+        <Height>500</Height>
+      </TileSize>
+      <TileSep>0</TileSep>
+    </Tileset>
+    <Tileset>
       <Name>suelo</Name>
       <FilePath>suelo.png</FilePath>
       <TileSize>
@@ -88,29 +85,11 @@
       <TileSep>0</TileSep>
     </Tileset>
     <Tileset>
-      <Name>fondo</Name>
-      <FilePath>fondo_castle.png</FilePath>
+      <Name>lava</Name>
+      <FilePath>lava.png</FilePath>
       <TileSize>
-        <Width>64</Width>
-        <Height>240</Height>
-      </TileSize>
-      <TileSep>0</TileSep>
-    </Tileset>
-    <Tileset>
-      <Name>fondo2</Name>
-      <FilePath>fondo_castle_clone.png</FilePath>
-      <TileSize>
-        <Width>64</Width>
-        <Height>240</Height>
-      </TileSize>
-      <TileSep>0</TileSep>
-    </Tileset>
-    <Tileset>
-      <Name>escalera</Name>
-      <FilePath>escalera.png</FilePath>
-      <TileSize>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </TileSize>
       <TileSep>0</TileSep>
     </Tileset>
