@@ -51,7 +51,8 @@ class MenuState extends FlxState
 			_Lazo.revive();
 			_Lazo.animation.play("attack");
 		}
-		guiaCamara.x = personaje.x;
+		if (personaje.alive)
+			guiaCamara.x = personaje.x;
 		if (_Lazo.alive)
 		{
 			posLazo(personaje.x, personaje.y);
