@@ -1,33 +1,32 @@
 package sprites;
 
 import flixel.FlxSprite;
-
+import flixel.system.FlxAssets.FlxGraphicAsset;
 /**
  * ...
  * @author ...
  */
 class Lazo extends FlxSprite
 {
-	private var personaje:Player;
-
-	public function new() 
+	private var mov:Float = 6;
+	private var dead:Bool = false;
+	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
+		super(X, Y, SimpleGraphic);
 		loadGraphic(AssetPaths.Lazo__png, true, 32, 32);
-		animation.add("attackD", [0, 1, 2], 2);
-		animation.add("attackI", [0, 1, 2], 2, false, true);
-		
+		animation.add("attack", [0, 1, 2, 2], 7, true);
 	}
 	
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		if (FlxG.keys.p.ressed.L)
-		{   if(personaje.velocity.x >=0)
-				animation.play("attackD");
-			else if (personaje.velocity.x < 0)
-				animation.play("attackI");
-		}
-		
+		//velocity.x += mov;
+		/*if (animation.frameIndex == 0)
+		{
+			x -= 5;
+			y += 15;
+		}*/	
+
 	}
 	
 }
