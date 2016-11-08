@@ -9,7 +9,7 @@
     <Height>480</Height>
   </LevelDefaultSize>
   <LevelMinimumSize>
-    <Width>256</Width>
+    <Width>5120</Width>
     <Height>240</Height>
   </LevelMinimumSize>
   <LevelMaximumSize>
@@ -31,7 +31,7 @@
     <LayerDefinition xsi:type="TileLayerDefinition">
       <Name>fondo</Name>
       <Grid>
-        <Width>75</Width>
+        <Width>64</Width>
         <Height>500</Height>
       </Grid>
       <ScrollFactor>
@@ -64,13 +64,70 @@
       </ScrollFactor>
       <ExportMode>CSV</ExportMode>
     </LayerDefinition>
+    <LayerDefinition xsi:type="EntityLayerDefinition">
+      <Name>baba</Name>
+      <Grid>
+        <Width>16</Width>
+        <Height>16</Height>
+      </Grid>
+      <ScrollFactor>
+        <X>1</X>
+        <Y>1</Y>
+      </ScrollFactor>
+    </LayerDefinition>
+    <LayerDefinition xsi:type="EntityLayerDefinition">
+      <Name>soldado</Name>
+      <Grid>
+        <Width>24</Width>
+        <Height>46</Height>
+      </Grid>
+      <ScrollFactor>
+        <X>1</X>
+        <Y>1</Y>
+      </ScrollFactor>
+    </LayerDefinition>
+    <LayerDefinition xsi:type="EntityLayerDefinition">
+      <Name>mur</Name>
+      <Grid>
+        <Width>16</Width>
+        <Height>16</Height>
+      </Grid>
+      <ScrollFactor>
+        <X>1</X>
+        <Y>1</Y>
+      </ScrollFactor>
+    </LayerDefinition>
+    <LayerDefinition xsi:type="TileLayerDefinition">
+      <Name>pinches</Name>
+      <Grid>
+        <Width>16</Width>
+        <Height>4</Height>
+      </Grid>
+      <ScrollFactor>
+        <X>1</X>
+        <Y>1</Y>
+      </ScrollFactor>
+      <ExportMode>CSV</ExportMode>
+    </LayerDefinition>
+    <LayerDefinition xsi:type="TileLayerDefinition">
+      <Name>plat</Name>
+      <Grid>
+        <Width>16</Width>
+        <Height>4</Height>
+      </Grid>
+      <ScrollFactor>
+        <X>1</X>
+        <Y>1</Y>
+      </ScrollFactor>
+      <ExportMode>CSV</ExportMode>
+    </LayerDefinition>
   </LayerDefinitions>
   <Tilesets>
     <Tileset>
       <Name>fondo</Name>
       <FilePath>fondogrande.png</FilePath>
       <TileSize>
-        <Width>75</Width>
+        <Width>64</Width>
         <Height>500</Height>
       </TileSize>
       <TileSep>0</TileSep>
@@ -93,6 +150,97 @@
       </TileSize>
       <TileSep>0</TileSep>
     </Tileset>
+    <Tileset>
+      <Name>baba</Name>
+      <FilePath>E1.png</FilePath>
+      <TileSize>
+        <Width>16</Width>
+        <Height>16</Height>
+      </TileSize>
+      <TileSep>0</TileSep>
+    </Tileset>
+    <Tileset>
+      <Name>soldado</Name>
+      <FilePath>enemigoSoldado.png</FilePath>
+      <TileSize>
+        <Width>24</Width>
+        <Height>46</Height>
+      </TileSize>
+      <TileSep>0</TileSep>
+    </Tileset>
+    <Tileset>
+      <Name>mur</Name>
+      <FilePath>bat.png</FilePath>
+      <TileSize>
+        <Width>16</Width>
+        <Height>16</Height>
+      </TileSize>
+      <TileSep>0</TileSep>
+    </Tileset>
+    <Tileset>
+      <Name>pinches</Name>
+      <FilePath>pinches.png</FilePath>
+      <TileSize>
+        <Width>16</Width>
+        <Height>4</Height>
+      </TileSize>
+      <TileSep>0</TileSep>
+    </Tileset>
+    <Tileset>
+      <Name>plat</Name>
+      <FilePath>plat.png</FilePath>
+      <TileSize>
+        <Width>16</Width>
+        <Height>4</Height>
+      </TileSize>
+      <TileSep>0</TileSep>
+    </Tileset>
   </Tilesets>
-  <EntityDefinitions />
+  <EntityDefinitions>
+    <EntityDefinition Name="baba" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>16</Width>
+        <Height>16</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="E1.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="soldado" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>24</Width>
+        <Height>46</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="enemigoSoldado.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="mur" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>16</Width>
+        <Height>16</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="bat.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+  </EntityDefinitions>
 </project>

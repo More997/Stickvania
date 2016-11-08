@@ -24,6 +24,8 @@ class Player extends FlxSprite
 	}
 	override public function update(elapsed:Float):Void
 	{
+		Reg.jugadorPosX = x;
+		Reg.jugadorPosY = y;
 		if (isTouching(FlxObject.FLOOR))
 			velocity.x = 0;
 		if (FlxG.keys.justPressed.A && isTouching(FlxObject.FLOOR) && animation.name != "attack" && animation.name != "attackUp")//para que no invierta la animacion en el aire.
