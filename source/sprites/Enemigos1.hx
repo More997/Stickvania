@@ -30,16 +30,6 @@ class Enemigos1 extends FlxSprite
 			animation.play("caminaD");
 			velocity.x = 10;
 		}
-		if (x > FlxG.camera.scroll.x + FlxG.camera.width || x < FlxG.camera.scroll.x && this.alive)
-			kill();
-		else if(x < FlxG.camera.scroll.x && x < FlxG.camera.scroll.x + FlxG.camera.width)
-		{
-			if (!this.alive)
-				revive();
-		}
-		trace("x", x);
-		trace("camara scroll x", FlxG.camera.scroll.x);
-		trace("y", y);
 	}
 	
 }
