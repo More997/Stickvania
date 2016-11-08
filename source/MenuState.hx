@@ -20,7 +20,7 @@ class MenuState extends FlxState
 	private var _Load:FlxOgmoLoader;
 	private var guiaCamara:FlxSprite;
 	private var _Lazo:Lazo;
-	private var _Mur:Murcielago;
+	private var _Mur:Murcielago; //Mur-kun presentandose al caso!"
 	
 	override public function create():Void
 	{
@@ -69,6 +69,8 @@ class MenuState extends FlxState
 			posLazo(personaje.x, personaje.y);
 			if (FlxG.collide(_Lazo, _Baba))
 				_Baba.destroy();
+			else if (FlxG.collide(_Lazo, _Mur))
+				_Mur.destroy();    //puse priodidad que destruya primero la baba si ambos enemigos estan juntos.
 		}
 		FlxG.collide(_Suelo, personaje);
 		FlxG.collide(_Suelo, _Baba);
@@ -101,6 +103,12 @@ class MenuState extends FlxState
 				_Baba.animation.add("caminaD", [0,1], 3, true, true);
 				_Baba.animation.play("caminaI");
 				add(_Baba);
+			case "mur":
+				_Mur = new Murcielago(x, y);
+				_Mur.loadGraphic(AssetPaths.bat__png, true, 13, 7);
+				_Mur.animation.add("vuela",	[0, 1], 4, true);
+				_Mur.animation.play("vuela");
+				add(_Mur);
 		}
 	}
 }

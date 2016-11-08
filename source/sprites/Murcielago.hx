@@ -18,7 +18,6 @@ class Murcielago extends FlxSprite
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		animation.play("vuela");
 		if (y <= posIY && velocity.y < 0)
 		{
 			velocity.y = 20;
