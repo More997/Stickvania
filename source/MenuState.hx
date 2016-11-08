@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import sprites.Enemigos1;
 import flixel.tile.FlxTilemap;
 import flixel.addons.editors.ogmo.FlxOgmoLoader;
@@ -17,6 +18,7 @@ class MenuState extends FlxState
 	private var _Fondo:FlxTilemap;
 	private var _Plat:FlxTilemap;
 	private var _Baba:Enemigos1;
+	private var _Babas:FlxTypedGroup<Enemigos1>;
 	private var _Load:FlxOgmoLoader;
 	private var guiaCamara:FlxSprite;
 	private var _Lazo:Lazo;
@@ -25,6 +27,7 @@ class MenuState extends FlxState
 	override public function create():Void
 	{
 		super.create();
+		_Babas = new FlxTypedGroup<Enemigos1>();
 		FlxG.mouse.visible = false;
 		_Lazo = new Lazo();
 		guiaCamara = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
@@ -41,6 +44,7 @@ class MenuState extends FlxState
 		add(_Suelo);
 		add(personaje);
 		add(_Lazo);
+		add(_Babas);
 		_Lazo.kill();
 		FlxG.worldBounds.set(0, 0, _Fondo.width, _Fondo.height);//setear el tamaño total del nivel con los datos de ogmo.
 		FlxG.camera.setScrollBounds(0, _Fondo.width, 0, _Fondo.height);//Rango de movilidad de la camara(Todo el nivel)
@@ -73,7 +77,7 @@ class MenuState extends FlxState
 				_Mur.destroy();    //puse priodidad que destruya primero la baba si ambos enemigos estan juntos.
 		}
 		FlxG.collide(_Suelo, personaje);
-		FlxG.collide(_Suelo, _Baba);
+		colisionEnemigos();
 	}
 	public function posLazo(X:Float, Y:Float)
 	{
@@ -102,13 +106,23 @@ class MenuState extends FlxState
 				_Baba.animation.add("caminaI", [0,1], 3, true);
 				_Baba.animation.add("caminaD", [0,1], 3, true, true);
 				_Baba.animation.play("caminaI");
-				add(_Baba);
+				_Baba.scale.set(2, 2);
+				_Baba.setSize(32, 32);
+				_Baba.centerOffsets();
+				_Babas.add(_Baba);
 			case "mur":
 				_Mur = new Murcielago(x, y);
 				_Mur.loadGraphic(AssetPaths.bat__png, true, 13, 7);
 				_Mur.animation.add("vuela",	[0, 1], 4, true);
 				_Mur.animation.play("vuela");
 				add(_Mur);
+		}
+	}
+	private function colisionEnemigos()
+	{
+		for (i in 0..._Babas.length)
+		{
+			FlxG.collide(_Suelo, _Babas.members[i]);
 		}
 	}
 }

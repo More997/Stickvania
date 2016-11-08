@@ -14,9 +14,7 @@ class Enemigos1 extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		scale.set(2, 2);
-		setSize(32, 32);
-		centerOffsets();
+		
 		acceleration.y = Reg.vAccel;
 		
 	}
