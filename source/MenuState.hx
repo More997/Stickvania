@@ -7,6 +7,7 @@ import sprites.Enemigos1;
 import flixel.tile.FlxTilemap;
 import flixel.addons.editors.ogmo.FlxOgmoLoader;
 import sprites.Lazo;
+import sprites.Murcielago;
 import sprites.Player;
 
 class MenuState extends FlxState
@@ -19,6 +20,7 @@ class MenuState extends FlxState
 	private var _Load:FlxOgmoLoader;
 	private var guiaCamara:FlxSprite;
 	private var _Lazo:Lazo;
+	private var _Mur:Murcielago;
 	
 	override public function create():Void
 	{
