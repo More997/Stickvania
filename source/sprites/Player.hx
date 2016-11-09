@@ -10,7 +10,8 @@ import flixel.FlxObject;
  */
 class Player extends FlxSprite
 {	
-	
+	public var invulnerable:Bool = false;
+	private var timerInvulnerable:Int = 0;
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{   
 		super(X, Y, SimpleGraphic);
@@ -63,7 +64,24 @@ class Player extends FlxSprite
 			animation.play("quieto");
 		else if (animation.finished && animation.name == "attackUp")//Cuando termina la animacion cambia a quieto.
 			animation.play("quieto");
+		if (invulnerable)
+		{
+			timerInvulnerable++;
+			
+			if (timerInvulnerable <= 121)
+			{
+				if (alpha == 1)
+					alpha = 0;
+				else
+					alpha = 1;
+			}
+			else
+			{
+				timerInvulnerable = 0;
+				invulnerable = false;
+				alpha = 1;
+			}
+		}
 		super.update(elapsed);
 	}
-	
 }

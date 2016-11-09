@@ -17,6 +17,8 @@ class MenuState extends FlxState
 {
 	private var personaje:Player;
 	private var _Suelo:FlxTilemap;
+	private var _Pinches:FlxTilemap;
+	//private var _Lava:FlxTilemap;
 	private var _Fondo:FlxTilemap;
 	private var _Plat:Plataforma;
 	private var _Baba:Baba;
@@ -27,7 +29,6 @@ class MenuState extends FlxState
 	private var _Plataformas:FlxTypedGroup<Plataforma>;
 	private var _Load:FlxOgmoLoader;
 	private var _Sol:Soldado;
-	//private var _GuiaCamara:FlxSprite;
 	private var _Lazo:Lazo;
 	
 	
@@ -40,21 +41,27 @@ class MenuState extends FlxState
 		_Sols = new FlxTypedGroup<Soldado>();
 		FlxG.mouse.visible = false;
 		_Lazo = new Lazo();
-		//_GuiaCamara = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		_Load = new FlxOgmoLoader(AssetPaths.Caste__oel);
 		_Fondo = _Load.loadTilemap(AssetPaths.fondogrande__png, 75, 480, "fondo");
 		_Suelo = _Load.loadTilemap(AssetPaths.suelo__png, 16, 16, "suelo");
+		_Pinches = _Load.loadTilemap(AssetPaths.pinches__png, 16, 4, "pinches");
+		//_Lava = _Load.loadTilemap(AssetPaths.lava__png, 32, 32, "lava"); //le falta el esoacio vacio.
 		_Load.loadEntities(placeEntities, "baba");
 		_Load.loadEntities(placeEntities, "mur");
+		_Load.loadEntities(placeEntities, "soldado");
+		//_Load.loadEntities(placeEntities, "boss");
 		_Suelo.immovable = true;
 		personaje = new Player(100, 100);
 		add(_Fondo);
 		add(_Plataformas);
 		add(_Suelo);
+		add(_Pinches);
+		//add(_Lava);
 		add(personaje);
 		add(_Lazo);
 		add(_Babas);
 		add(_Murcielagos);
+		add(_Sols);
 		_Lazo.kill();
 		FlxG.worldBounds.set(0, 0, _Fondo.width, _Fondo.height);//setear el tamaño total del nivel con los datos de ogmo.
 		FlxG.camera.setScrollBounds(0, _Fondo.width, 0, _Fondo.height);//Rango de movilidad de la camara(Todo el nivel)
@@ -67,12 +74,6 @@ class MenuState extends FlxState
 		
 		if (personaje.alive)
 		{
-			/*_GuiaCamara.x = personaje.x;
-			if (personaje.y > _Fondo.height / 2 - 20)
-			{
-				if(_GuiaCamara.y < personaje.y)
-					_GuiaCamara.y += 14;
-			}*/
 			if (personaje.animation.frameIndex == 11)
 			{
 				_Lazo.revive();
@@ -84,12 +85,6 @@ class MenuState extends FlxState
 			}
 			FlxG.collide(_Suelo, personaje);
 			enemigosYPlataformasInteracciones();
-			if (FlxG.collide(personaje, _Baba)
-				Reg.vida -= 1;
-			else if (FlxG.collide(personaje, _Mur)
-				Reg.vida -= 1;
-			else if (FlxG.collide(personaje, _Sol)
-				Reg.vida -= 1;
 		}
 	}
 	public function posLazo(X:Float, Y:Float)
@@ -146,9 +141,7 @@ class MenuState extends FlxState
 				_Sol.animation.add("correI", [0, 1, 2, 3, 4], 5, true);
 				_Sol.animation.add("correD", [0, 1, 2, 3, 4], 5, true, true);
 				_Sol.animation.play("correI");
-				_Sols.add(_Sol);
-				
-			
+				_Sols.add(_Sol);			
 		}
 	}
 	private function enemigosYPlataformasInteracciones()
@@ -168,6 +161,13 @@ class MenuState extends FlxState
 				_Babas.members[i].muerto = true;
 				_Babas.members[i].destroy();
 			}
+			
+			if (FlxG.overlap(personaje, _Babas.members[i]) && !personaje.invulnerable)
+			{
+				if (Reg.vida > 0)
+					personaje.invulnerable = true;
+				Reg.vida -= 1;
+			}
 		}
 		for (i in 0..._Murcielagos.length)
 		{
@@ -182,6 +182,33 @@ class MenuState extends FlxState
 			{
 				_Murcielagos.members[i].muerto = true;
 				_Murcielagos.members[i].destroy();
+			}
+			if (FlxG.overlap(personaje, _Murcielagos.members[i]) && !personaje.invulnerable)
+			{
+				if (Reg.vida > 0)
+					personaje.invulnerable = true;
+				Reg.vida -= 1;
+			}
+		}
+		for (i in 0..._Sols.length)
+		{
+			if(_Sols.members[i].x < FlxG.camera.scroll.x + FlxG.camera.width && _Sols.members[i].x > FlxG.camera.scroll.x-_Sols.members[i].width)
+			{
+				if (!_Sols.members[i].alive && !_Sols.members[i].muerto)
+				_Sols.members[i].revive();
+			}
+			else if (_Sols.members[i].x > FlxG.camera.scroll.x + FlxG.camera.width || _Sols.members[i].x < FlxG.camera.scroll.x -_Sols.members[i].width && _Sols.members[i].alive)
+				_Murcielagos.members[i].kill();
+			if (FlxG.collide(_Lazo, _Sols.members[i]))
+			{
+				_Sols.members[i].muerto = true;
+				_Sols.members[i].destroy();
+			}
+			if (FlxG.overlap(personaje, _Sols.members[i]) && !personaje.invulnerable)
+			{
+				if (Reg.vida > 0)
+					personaje.invulnerable = true;
+				Reg.vida -= 1;
 			}
 		}
 		for (i in 0..._Plataformas.length)
