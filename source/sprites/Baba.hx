@@ -2,34 +2,32 @@ package sprites;
 
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
-
+import flixel.FlxG;
+import flixel.math.FlxPoint;
 /**
  * ...
  * @author ...
  */
-class Murcielago extends FlxSprite
+class Baba extends FlxSprite
 {
-	private var posIY:Float;
 	public var muerto:Bool = false;
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		posIY = y;
+		
+		acceleration.y = Reg.vAccel;
+		
 	}
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		if (y <= posIY && velocity.y < 0)
-		{
-			velocity.y = 20;
-		}
-		else if (y > posIY +50 && velocity.y > 0)
-			velocity.y = -20;
 		if(x > Reg.jugadorPosX){
+			animation.play("caminaI");
 			velocity.x = -10;
 		}
 		else
 		{
+			animation.play("caminaD");
 			velocity.x = 10;
 		}
 	}

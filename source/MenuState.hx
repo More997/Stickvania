@@ -4,11 +4,12 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import sprites.Enemigos1;
+import sprites.Baba;
 import flixel.tile.FlxTilemap;
 import flixel.addons.editors.ogmo.FlxOgmoLoader;
 import sprites.Lazo;
 import sprites.Murcielago;
+import sprites.Plataforma;
 import sprites.Player;
 
 class MenuState extends FlxState
@@ -16,33 +17,34 @@ class MenuState extends FlxState
 	private var personaje:Player;
 	private var _Suelo:FlxTilemap;
 	private var _Fondo:FlxTilemap;
-	//private var _Plat:FlxTilemap;
-	private var _Baba:Enemigos1;
+	private var _Plat:Plataforma;
+	private var _Baba:Baba;
 	private var _Mur:Murcielago; //Mur-kun presentandose al caso!"
-	private var _Babas:FlxTypedGroup<Enemigos1>;
+	private var _Babas:FlxTypedGroup<Baba>;
 	private var _Murcielagos:FlxTypedGroup<Murcielago>;
+	private var _Plataformas:FlxTypedGroup<Plataforma>;
 	private var _Load:FlxOgmoLoader;
-	private var _GuiaCamara:FlxSprite;
+	//private var _GuiaCamara:FlxSprite;
 	private var _Lazo:Lazo;
 	
 	override public function create():Void
 	{
 		super.create();
-		_Babas = new FlxTypedGroup<Enemigos1>();
+		_Babas = new FlxTypedGroup<Baba>();
 		_Murcielagos = new FlxTypedGroup<Murcielago>();
+		_Plataformas = new FlxTypedGroup<Plataforma>();
 		FlxG.mouse.visible = false;
 		_Lazo = new Lazo();
-		_GuiaCamara = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
+		//_GuiaCamara = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		_Load = new FlxOgmoLoader(AssetPaths.Caste__oel);
 		_Fondo = _Load.loadTilemap(AssetPaths.fondogrande__png, 75, 480, "fondo");
 		_Suelo = _Load.loadTilemap(AssetPaths.suelo__png, 16, 16, "suelo");
-		//_Plat = _Load.loadTilemap(AssetPaths.plat__png, 16, 4, "plat");
 		_Load.loadEntities(placeEntities, "baba");
+		_Load.loadEntities(placeEntities, "mur");
 		_Suelo.immovable = true;
-		//_Plat.immovable = true;
 		personaje = new Player(100, 100);
 		add(_Fondo);
-		//add(_Plat);
+		add(_Plataformas);
 		add(_Suelo);
 		add(personaje);
 		add(_Lazo);
@@ -51,32 +53,33 @@ class MenuState extends FlxState
 		_Lazo.kill();
 		FlxG.worldBounds.set(0, 0, _Fondo.width, _Fondo.height);//setear el tamaño total del nivel con los datos de ogmo.
 		FlxG.camera.setScrollBounds(0, _Fondo.width, 0, _Fondo.height);//Rango de movilidad de la camara(Todo el nivel)
-		FlxG.camera.follow(_GuiaCamara);//La camara se centra en el jugador.
+		FlxG.camera.follow(personaje);//La camara se centra en el jugador.
 	}
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 
-		if (personaje.animation.frameIndex == 11)
-		{
-			_Lazo.revive();
-			_Lazo.animation.play("attack");
-		}
+		
 		if (personaje.alive)
 		{
-			_GuiaCamara.x = personaje.x;
+			/*_GuiaCamara.x = personaje.x;
 			if (personaje.y > _Fondo.height / 2 - 20)
 			{
 				if(_GuiaCamara.y < personaje.y)
 					_GuiaCamara.y += 14;
+			}*/
+			if (personaje.animation.frameIndex == 11)
+			{
+				_Lazo.revive();
+				_Lazo.animation.play("attack");
 			}
+			if (_Lazo.alive)
+			{
+				posLazo(personaje.x, personaje.y);
+			}
+			FlxG.collide(_Suelo, personaje);
+			enemigosYPlataformasInteracciones();
 		}
-		if (_Lazo.alive)
-		{
-			posLazo(personaje.x, personaje.y);
-		}
-		FlxG.collide(_Suelo, personaje);
-		enemigosInteracciones();
 	}
 	public function posLazo(X:Float, Y:Float)
 	{
@@ -100,7 +103,7 @@ class MenuState extends FlxState
 		switch entityName
 		{
 			case "baba":
-				_Baba = new Enemigos1(x,y-50);
+				_Baba = new Baba(x,y-50);
 				_Baba.loadGraphic(AssetPaths.E1__png, true, 16, 16);
 				_Baba.animation.add("caminaI", [0,1], 3, true);
 				_Baba.animation.add("caminaD", [0,1], 3, true, true);
@@ -114,35 +117,56 @@ class MenuState extends FlxState
 				_Mur.loadGraphic(AssetPaths.bat__png, true, 13, 7);
 				_Mur.animation.add("vuela",	[0, 1], 4, true);
 				_Mur.animation.play("vuela");
-				add(_Murcielagos);
+				_Plat.scale.set(2, 2);
+				_Plat.setSize(26, 14);
+				_Plat.centerOffsets();
+				_Murcielagos.add(_Mur);
+			case "plat":
+				_Plat = new Plataforma(x, y);
+				_Plat.loadGraphic(AssetPaths.plat__png, false, 16, 4);
+				_Plat.scale.set(2, 2);
+				_Plat.setSize(32, 8);
+				_Plat.centerOffsets();
+				_Plat.immovable = true;
+				_Plataformas.add(_Plat);
 		}
 	}
-	private function enemigosInteracciones()
+	private function enemigosYPlataformasInteracciones()
 	{
 		for (i in 0..._Babas.length)
 		{
 			FlxG.collide(_Suelo, _Babas.members[i]);
 			if(_Babas.members[i].x < FlxG.camera.scroll.x + FlxG.camera.width && _Babas.members[i].x > FlxG.camera.scroll.x-_Babas.members[i].width)
 			{
-				if (!_Babas.members[i].alive)
-				_Babas.members[i].revive();
+				if (!_Babas.members[i].alive && !_Babas.members[i].muerto)
+					_Babas.members[i].revive();
 			}
 			else if (_Babas.members[i].x > FlxG.camera.scroll.x + FlxG.camera.width || _Babas.members[i].x < FlxG.camera.scroll.x -_Babas.members[i].width && _Babas.members[i].alive)
 				_Babas.members[i].kill();
 			if (FlxG.collide(_Lazo, _Babas.members[i]))
+			{
+				_Babas.members[i].muerto = true;
 				_Babas.members[i].destroy();
+			}
 		}
-		/*for (i in 0..._Murcielagos.length)
+		for (i in 0..._Murcielagos.length)
 		{
 			if(_Murcielagos.members[i].x < FlxG.camera.scroll.x + FlxG.camera.width && _Murcielagos.members[i].x > FlxG.camera.scroll.x-_Murcielagos.members[i].width)
 			{
-				if (!_Murcielagos.members[i].alive)
+				if (!_Murcielagos.members[i].alive && !_Murcielagos.members[i].muerto)
 				_Murcielagos.members[i].revive();
 			}
 			else if (_Murcielagos.members[i].x > FlxG.camera.scroll.x + FlxG.camera.width || _Murcielagos.members[i].x < FlxG.camera.scroll.x -_Murcielagos.members[i].width && _Murcielagos.members[i].alive)
 				_Murcielagos.members[i].kill();
 			if (FlxG.collide(_Lazo, _Murcielagos.members[i]))
-					_Murcielagos.members[i].destroy();
-		}*/
+			{
+				_Murcielagos.members[i].muerto = true;
+				_Murcielagos.members[i].destroy();
+			}
+		}
+		for (i in 0..._Plataformas.length)
+		{
+			FlxG.collide(personaje, _Plataformas.members[i]);			
+		}
 	}
 }
