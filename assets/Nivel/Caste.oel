@@ -214,4 +214,12 @@
   <boss>
     <boss id="0" x="4900" y="0" />
   </boss>
+  <columnas>
+    <columnas id="0" x="1520" y="96" />
+    <columnas id="1" x="1040" y="128" />
+    <columnas id="2" x="608" y="160" />
+    <columnas id="3" x="2752" y="192" />
+    <columnas id="4" x="3216" y="320" />
+    <columnas id="5" x="3504" y="320" />
+  </columnas>
 </level>
