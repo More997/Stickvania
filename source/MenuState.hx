@@ -19,7 +19,7 @@ class MenuState extends FlxState
 	private var personaje:Player;
 	private var _Suelo:FlxTilemap;
 	private var _Pinches:FlxTilemap;
-	//private var _Lava:FlxTilemap;
+	private var _Lava:FlxTilemap;
 	private var _Fondo:FlxTilemap;
 	private var _Plat:Plataforma;
 	private var _Baba:Baba;
@@ -49,7 +49,7 @@ class MenuState extends FlxState
 		_Fondo = _Load.loadTilemap(AssetPaths.fondogrande__png, 75, 480, "fondo");
 		_Suelo = _Load.loadTilemap(AssetPaths.suelo__png, 16, 16, "suelo");
 		_Pinches = _Load.loadTilemap(AssetPaths.pinches__png, 16, 4, "pinches");
-		//_Lava = _Load.loadTilemap(AssetPaths.lava__png, 32, 32, "lava"); //le falta el esoacio vacio.
+		_Lava = _Load.loadTilemap(AssetPaths.lava__png, 32, 32, "lava"); //le falta el esoacio vacio.
 		_Load.loadEntities(placeEntities, "baba");
 		_Load.loadEntities(placeEntities, "mur");
 		_Load.loadEntities(placeEntities, "soldado");
@@ -60,7 +60,7 @@ class MenuState extends FlxState
 		add(_Plataformas);
 		add(_Suelo);
 		add(_Pinches);
-		//add(_Lava);
+		add(_Lava);
 		add(personaje);
 		add(_Lazo);
 		add(_Babas);
@@ -89,6 +89,15 @@ class MenuState extends FlxState
 			}
 			FlxG.collide(_Suelo, personaje);
 			enemigosYPlataformasInteracciones();
+			if (FlxG.collide(_Lava, personaje))
+			{
+				Reg.vida = 0;
+			}
+			if (FlxG.collide(_Pinches, personaje)&& !personaje.invulnerable)
+			{	
+				personaje.invulnerable = true;
+				Reg.vida --;				
+			}
 		}
 	}
 	public function posLazo(X:Float, Y:Float)
@@ -146,11 +155,12 @@ class MenuState extends FlxState
 				_Sol.animation.add("correD", [0, 1, 2, 3, 4], 5, true, true);
 				_Sol.animation.play("correI");
 				_Sols.add(_Sol);
-			case "columnas":
+		/*	case "columnas":
 				_Columna = new Columna(x, y);
 				_Columna.loadGraphic(AssetPaths.columnas__png, true, 16, 32);
 				_Columna.animation.add("dispara", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 5);
-				_Columnas.
+				_Columnas.*/
+		
 				
 		}
 	}
@@ -240,6 +250,11 @@ class MenuState extends FlxState
 				_Sols.members[i].muerto = true;
 				_Sols.members[i].destroy();
 			}
+		}
+		if (Reg.vida == 0)
+		{
+			FlxG.resetState();
+			Reg.vida = 5;
 		}
 	
 			if (FlxG.keys.pressed.R) 

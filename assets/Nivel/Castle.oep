@@ -56,7 +56,7 @@
       <Name>lava</Name>
       <Grid>
         <Width>32</Width>
-        <Height>23</Height>
+        <Height>32</Height>
       </Grid>
       <ScrollFactor>
         <X>1</X>
