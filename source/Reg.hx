@@ -12,4 +12,5 @@ class Reg
 	static public var jugadorPosX:Float;
 	static public var jugadorPosY:Float;
 	static public var vida:Int = 5;
+	static public var disparan:Int = 0;
 }

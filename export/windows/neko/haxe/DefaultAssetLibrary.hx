@@ -74,14 +74,35 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		Font.registerFont (__ASSET__flixel_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__flixel_fonts_monsterrat_ttf);
+		
 		
 		
 		
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -113,6 +134,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		
+		className.set ("flixel/images/logo/default.png", __ASSET__flixel_images_logo_default_png);
+		type.set ("flixel/images/logo/default.png", AssetType.IMAGE);
 		
 		
 		if (useManifest) {
@@ -518,11 +542,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if (windows || mac || linux)
 
 
-@:sound("C:/HaxeToolkit/haxe/lib/flixel/4,1,1/assets/sounds/beep.ogg") @:keep #if display private #end class __ASSET__flixel_sounds_beep_ogg extends flash.media.Sound {}
-@:sound("C:/HaxeToolkit/haxe/lib/flixel/4,1,1/assets/sounds/flixel.ogg") @:keep #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends flash.media.Sound {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,1,1/assets/fonts/nokiafc22.ttf") @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends flash.text.Font {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,1,1/assets/fonts/monsterrat.ttf") @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends flash.text.Font {}
-@:bitmap("C:/HaxeToolkit/haxe/lib/flixel/4,1,1/assets/images/ui/button.png") @:keep #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData {}
+@:sound("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/sounds/beep.ogg") @:keep #if display private #end class __ASSET__flixel_sounds_beep_ogg extends flash.media.Sound {}
+@:sound("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/sounds/flixel.ogg") @:keep #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends flash.media.Sound {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/fonts/nokiafc22.ttf") @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends flash.text.Font {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/fonts/monsterrat.ttf") @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends flash.text.Font {}
+@:bitmap("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/images/ui/button.png") @:keep #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData {}
+@:bitmap("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/images/logo/default.png") @:keep #if display private #end class __ASSET__flixel_images_logo_default_png extends flash.display.BitmapData {}
 
 
 
@@ -613,8 +638,19 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
+		
 		
 		
 		#end
@@ -625,8 +661,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		path.set ("assets/images/axe.png", "assets/images/axe.png");
 		type.set ("assets/images/axe.png", AssetType.IMAGE);
-		path.set ("assets/images/E1.png", "assets/images/E1.png");
-		type.set ("assets/images/E1.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		path.set ("assets/images/Lazo.png", "assets/images/Lazo.png");
@@ -635,20 +669,42 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/stik ata axe.png", AssetType.IMAGE);
 		path.set ("assets/images/stik.png", "assets/images/stik.png");
 		type.set ("assets/images/stik.png", AssetType.IMAGE);
+		path.set ("assets/images/stik.psd", "assets/images/stik.psd");
+		type.set ("assets/images/stik.psd", AssetType.BINARY);
 		path.set ("assets/images/stikjump.png", "assets/images/stikjump.png");
 		type.set ("assets/images/stikjump.png", AssetType.IMAGE);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
+		path.set ("assets/music/Tropical House 1.wav", "assets/music/Tropical House 1.wav");
+		type.set ("assets/music/Tropical House 1.wav", AssetType.SOUND);
+		path.set ("assets/Nivel/bat.png", "assets/Nivel/bat.png");
+		type.set ("assets/Nivel/bat.png", AssetType.IMAGE);
 		path.set ("assets/Nivel/Caste.oel", "assets/Nivel/Caste.oel");
 		type.set ("assets/Nivel/Caste.oel", AssetType.TEXT);
 		path.set ("assets/Nivel/Castle.oep", "assets/Nivel/Castle.oep");
 		type.set ("assets/Nivel/Castle.oep", AssetType.TEXT);
+		path.set ("assets/Nivel/columnas.png", "assets/Nivel/columnas.png");
+		type.set ("assets/Nivel/columnas.png", AssetType.IMAGE);
+		path.set ("assets/Nivel/Corazon.png", "assets/Nivel/Corazon.png");
+		type.set ("assets/Nivel/Corazon.png", AssetType.IMAGE);
+		path.set ("assets/Nivel/E1.png", "assets/Nivel/E1.png");
+		type.set ("assets/Nivel/E1.png", AssetType.IMAGE);
+		path.set ("assets/Nivel/enemigoSoldado.png", "assets/Nivel/enemigoSoldado.png");
+		type.set ("assets/Nivel/enemigoSoldado.png", AssetType.IMAGE);
 		path.set ("assets/Nivel/escalera.png", "assets/Nivel/escalera.png");
 		type.set ("assets/Nivel/escalera.png", AssetType.IMAGE);
-		path.set ("assets/Nivel/fondo_castle.png", "assets/Nivel/fondo_castle.png");
-		type.set ("assets/Nivel/fondo_castle.png", AssetType.IMAGE);
-		path.set ("assets/Nivel/fondo_castle_clone.png", "assets/Nivel/fondo_castle_clone.png");
-		type.set ("assets/Nivel/fondo_castle_clone.png", AssetType.IMAGE);
+		path.set ("assets/Nivel/fondogrande.png", "assets/Nivel/fondogrande.png");
+		type.set ("assets/Nivel/fondogrande.png", AssetType.IMAGE);
+		path.set ("assets/Nivel/lava.png", "assets/Nivel/lava.png");
+		type.set ("assets/Nivel/lava.png", AssetType.IMAGE);
+		path.set ("assets/Nivel/Loli.png", "assets/Nivel/Loli.png");
+		type.set ("assets/Nivel/Loli.png", AssetType.IMAGE);
+		path.set ("assets/Nivel/Lolii.png", "assets/Nivel/Lolii.png");
+		type.set ("assets/Nivel/Lolii.png", AssetType.IMAGE);
+		path.set ("assets/Nivel/pinches.png", "assets/Nivel/pinches.png");
+		type.set ("assets/Nivel/pinches.png", AssetType.IMAGE);
+		path.set ("assets/Nivel/plat.png", "assets/Nivel/plat.png");
+		type.set ("assets/Nivel/plat.png", AssetType.IMAGE);
 		path.set ("assets/Nivel/suelo.png", "assets/Nivel/suelo.png");
 		type.set ("assets/Nivel/suelo.png", AssetType.IMAGE);
 		path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
@@ -663,6 +719,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("flixel/fonts/monsterrat.ttf", AssetType.FONT);
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		className.set ("flixel/images/logo/default.png", __ASSET__flixel_images_logo_default_png);
+		type.set ("flixel/images/logo/default.png", AssetType.IMAGE);
 		
 		
 		#elseif html5
@@ -672,9 +730,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		id = "assets/images/axe.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
-		id = "assets/images/E1.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/images-go-here.txt";
@@ -689,25 +744,58 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/stik.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/stik.psd";
+		path.set (id, id);
+		type.set (id, AssetType.BINARY);
 		id = "assets/images/stikjump.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/music/music-goes-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/music/Tropical House 1.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
+		id = "assets/Nivel/bat.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/Nivel/Caste.oel";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		id = "assets/Nivel/Castle.oep";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/Nivel/columnas.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/Nivel/Corazon.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/Nivel/E1.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/Nivel/enemigoSoldado.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/Nivel/escalera.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
-		id = "assets/Nivel/fondo_castle.png";
+		id = "assets/Nivel/fondogrande.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
-		id = "assets/Nivel/fondo_castle_clone.png";
+		id = "assets/Nivel/lava.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/Nivel/Loli.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/Nivel/Lolii.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/Nivel/pinches.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/Nivel/plat.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/Nivel/suelo.png";
@@ -733,6 +821,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.FONT);
 		id = "flixel/images/ui/button.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/images/logo/default.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -769,6 +861,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		
 		className.set ("flixel/sounds/beep.ogg", __ASSET__flixel_sounds_beep_ogg);
 		type.set ("flixel/sounds/beep.ogg", AssetType.SOUND);
@@ -784,6 +886,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		
+		className.set ("flixel/images/logo/default.png", __ASSET__flixel_images_logo_default_png);
+		type.set ("flixel/images/logo/default.png", AssetType.IMAGE);
 		
 		
 		if (useManifest) {
@@ -1518,14 +1623,35 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
+
+
+
+
+
+
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_beep_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__flixel_images_logo_default_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 
 
 #elseif html5
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1550,6 +1676,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 #else
 
 
@@ -1557,11 +1684,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if (windows || mac || linux || cpp)
 
 
-@:file("C:/HaxeToolkit/haxe/lib/flixel/4,1,1/assets/sounds/beep.ogg") #if display private #end class __ASSET__flixel_sounds_beep_ogg extends lime.utils.ByteArray {}
-@:file("C:/HaxeToolkit/haxe/lib/flixel/4,1,1/assets/sounds/flixel.ogg") #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends lime.utils.ByteArray {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,1,1/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,1,1/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
-@:image("C:/HaxeToolkit/haxe/lib/flixel/4,1,1/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
+@:file("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/sounds/beep.ogg") #if display private #end class __ASSET__flixel_sounds_beep_ogg extends lime.utils.ByteArray {}
+@:file("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/sounds/flixel.ogg") #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends lime.utils.ByteArray {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
+@:image("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
+@:image("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/images/logo/default.png") #if display private #end class __ASSET__flixel_images_logo_default_png extends lime.graphics.Image {}
 
 
 

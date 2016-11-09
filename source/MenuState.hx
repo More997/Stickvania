@@ -33,11 +33,13 @@ class MenuState extends FlxState
 	private var _Sol:Soldado;
 	private var _Lazo:Lazo;
 	private var _Columna:Columna;
-	
+	private var _Coras:FlxTypedGroup<FlxSprite>;
+	private var _Cora:FlxSprite;
 	
 	override public function create():Void
 	{
 		super.create();
+		_Coras = new FlxTypedGroup<FlxSprite>();
 		_Babas = new FlxTypedGroup<Baba>();
 		_Murcielagos = new FlxTypedGroup<Murcielago>();
 		_Plataformas = new FlxTypedGroup<Plataforma>();
@@ -50,13 +52,16 @@ class MenuState extends FlxState
 		_Suelo = _Load.loadTilemap(AssetPaths.suelo__png, 16, 16, "suelo");
 		_Pinches = _Load.loadTilemap(AssetPaths.pinches__png, 16, 4, "pinches");
 		_Lava = _Load.loadTilemap(AssetPaths.lava__png, 32, 32, "lava"); //le falta el esoacio vacio.
+		_Load.loadEntities(placeEntities, "cora");
 		_Load.loadEntities(placeEntities, "baba");
 		_Load.loadEntities(placeEntities, "mur");
 		_Load.loadEntities(placeEntities, "soldado");
+		_Load.loadEntities(placeEntities, "columnas");
 		//_Load.loadEntities(placeEntities, "boss");
 		_Suelo.immovable = true;
 		personaje = new Player(100, 100);
 		add(_Fondo);
+		add(_Coras);
 		add(_Plataformas);
 		add(_Suelo);
 		add(_Pinches);
@@ -66,6 +71,7 @@ class MenuState extends FlxState
 		add(_Babas);
 		add(_Murcielagos);
 		add(_Sols);
+		add(_Columnas);
 		_Lazo.kill();
 		FlxG.worldBounds.set(0, 0, _Fondo.width, _Fondo.height);//setear el tamaño total del nivel con los datos de ogmo.
 		FlxG.camera.setScrollBounds(0, _Fondo.width, 0, _Fondo.height);//Rango de movilidad de la camara(Todo el nivel)
@@ -120,7 +126,11 @@ class MenuState extends FlxState
 		var x:Int = Std.parseInt(entityData.get("x"));
 		var y:Int = Std.parseInt(entityData.get("y"));
 		switch entityName
-		{
+		{  
+			case "cora":
+				_Cora = new FlxSprite(x, y);
+				_Cora.loadGraphic(AssetPaths.Corazon__png, false, 12, 12);
+				_Coras.add(_Cora);
 			case "baba":
 				_Baba = new Baba(x,y-50);
 				_Baba.loadGraphic(AssetPaths.E1__png, true, 16, 16);
@@ -155,17 +165,27 @@ class MenuState extends FlxState
 				_Sol.animation.add("correD", [0, 1, 2, 3, 4], 5, true, true);
 				_Sol.animation.play("correI");
 				_Sols.add(_Sol);
-		/*	case "columnas":
+			case "columnas":
 				_Columna = new Columna(x, y);
 				_Columna.loadGraphic(AssetPaths.columnas__png, true, 16, 32);
-				_Columna.animation.add("dispara", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 5);
-				_Columnas.*/
+				_Columna.animation.add("dispara",  [0, 1, 2, 3, 4, 5, 6, 7, 8], 7);
+				_Columna.animation.add("quieto", [0],1);
+				_Columna.animation.play("quieto");
+				_Columnas.add(_Columna);
 		
 				
 		}
 	}
 	private function enemigosYPlataformasInteracciones()
-	{
+	{  
+		for (i in 0..._Coras.length)
+		{
+			if (FlxG.collide(personaje, _Coras.members[i]))
+			{
+				Reg.vida += 1;
+				_Coras.members[i].destroy();
+			}
+		}
 		for (i in 0..._Babas.length)
 		{
 			FlxG.collide(_Suelo, _Babas.members[i]);
@@ -249,6 +269,29 @@ class MenuState extends FlxState
 			{
 				_Sols.members[i].muerto = true;
 				_Sols.members[i].destroy();
+			}
+		}
+		for (i in 0..._Columnas.length)
+		{
+			//FlxG.collide(_Suelo, _Columnas.members[i]);
+			if (_Columnas.members[i].x < FlxG.camera.scroll.x + FlxG.camera.width && _Columnas.members[i].x > FlxG.camera.scroll.x-_Columnas.members[i].width)
+			{
+				if (!_Columnas.members[i].alive && !_Columnas.members[i].muerto)
+					_Columnas.members[i].revive();
+			}
+			else if (_Columnas.members[i].x > FlxG.camera.scroll.x + FlxG.camera.width || _Columnas.members[i].x < FlxG.camera.scroll.x -_Columnas.members[i].width && _Columnas.members[i].alive)
+				_Columnas.members[i].kill();
+			if (FlxG.collide(_Lazo, _Columnas.members[i]))
+			{
+				_Columnas.members[i].muerto = true;
+				_Columnas.members[i].destroy();
+			}
+			
+			if (FlxG.overlap(personaje, _Columnas.members[i]) && !personaje.invulnerable)
+			{
+				if (Reg.vida > 0)
+					personaje.invulnerable = true;
+				Reg.vida -= 1;
 			}
 		}
 		if (Reg.vida == 0)

@@ -216,4 +216,9 @@
     <columnas id="4" x="3216" y="320" />
     <columnas id="5" x="3504" y="320" />
   </columnas>
+  <cora>
+    <cora id="0" x="2928" y="288" />
+    <cora id="1" x="4776" y="192" />
+    <cora id="2" x="3732" y="288" />
+  </cora>
 </level>
