@@ -114,7 +114,7 @@ class MenuState extends FlxState
 				_Mur.loadGraphic(AssetPaths.bat__png, true, 13, 7);
 				_Mur.animation.add("vuela",	[0, 1], 4, true);
 				_Mur.animation.play("vuela");
-				add(_Mur);
+				add(_Murcielagos);
 		}
 	}
 	private function enemigosInteracciones()
