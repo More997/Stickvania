@@ -12,6 +12,7 @@ import sprites.Murcielago;
 import sprites.Plataforma;
 import sprites.Player;
 import sprites.Soldado;
+import sprites.Columna;
 
 class MenuState extends FlxState
 {
@@ -27,9 +28,11 @@ class MenuState extends FlxState
 	private var _Sols:FlxTypedGroup<Soldado>;
 	private var _Murcielagos:FlxTypedGroup<Murcielago>;
 	private var _Plataformas:FlxTypedGroup<Plataforma>;
+	private var _Columnas:FlxTypedGroup<Columna>;
 	private var _Load:FlxOgmoLoader;
 	private var _Sol:Soldado;
 	private var _Lazo:Lazo;
+	private var _Columna:Columna;
 	
 	
 	override public function create():Void
@@ -39,6 +42,7 @@ class MenuState extends FlxState
 		_Murcielagos = new FlxTypedGroup<Murcielago>();
 		_Plataformas = new FlxTypedGroup<Plataforma>();
 		_Sols = new FlxTypedGroup<Soldado>();
+		_Columnas = new FlxTypedGroup<Columna>();
 		FlxG.mouse.visible = false;
 		_Lazo = new Lazo();
 		_Load = new FlxOgmoLoader(AssetPaths.Caste__oel);
@@ -141,7 +145,12 @@ class MenuState extends FlxState
 				_Sol.animation.add("correI", [0, 1, 2, 3, 4], 5, true);
 				_Sol.animation.add("correD", [0, 1, 2, 3, 4], 5, true, true);
 				_Sol.animation.play("correI");
-				_Sols.add(_Sol);			
+				_Sols.add(_Sol);
+			case "columnas":
+				_Columna = new Columna(x, y);
+				_Columna.loadGraphic(AssetPaths.columnas__png, true, 16, 32);
+				_Columna.animation.
+				
 		}
 	}
 	private function enemigosYPlataformasInteracciones()
@@ -231,5 +240,12 @@ class MenuState extends FlxState
 				_Sols.members[i].destroy();
 			}
 		}
+	
+			if (FlxG.keys.pressed.R) 
+		{  
+			FlxG.resetState();
+			Reg.vida = 5;
+		}
 	}
+	
 }

@@ -15,5 +15,13 @@ class Columna extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		
 	}
+		override public function update(elapsed:Float):Void
+	{
+		super.update(elapsed);
+		if(dispara=true){
+			animation.play("dispara");
+		}
+		if (animation.
+	}
 	
 }
