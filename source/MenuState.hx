@@ -149,7 +149,8 @@ class MenuState extends FlxState
 			case "columnas":
 				_Columna = new Columna(x, y);
 				_Columna.loadGraphic(AssetPaths.columnas__png, true, 16, 32);
-				_Columna.animation.
+				_Columna.animation.add("dispara", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 5);
+				_Columnas.
 				
 		}
 	}
