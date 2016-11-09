@@ -11,4 +11,5 @@ class Reg
 	static inline public var vAccel:Float = 750;
 	static public var jugadorPosX:Float;
 	static public var jugadorPosY:Float;
+	static public var vida:Int = 5;
 }

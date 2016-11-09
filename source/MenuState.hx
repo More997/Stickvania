@@ -11,6 +11,7 @@ import sprites.Lazo;
 import sprites.Murcielago;
 import sprites.Plataforma;
 import sprites.Player;
+import sprites.Soldado;
 
 class MenuState extends FlxState
 {
@@ -21,11 +22,14 @@ class MenuState extends FlxState
 	private var _Baba:Baba;
 	private var _Mur:Murcielago; //Mur-kun presentandose al caso!"
 	private var _Babas:FlxTypedGroup<Baba>;
+	private var _Sols:FlxTypedGroup<Soldado>;
 	private var _Murcielagos:FlxTypedGroup<Murcielago>;
 	private var _Plataformas:FlxTypedGroup<Plataforma>;
 	private var _Load:FlxOgmoLoader;
+	private var _Sol:Soldado;
 	//private var _GuiaCamara:FlxSprite;
 	private var _Lazo:Lazo;
+	
 	
 	override public function create():Void
 	{
@@ -33,6 +37,7 @@ class MenuState extends FlxState
 		_Babas = new FlxTypedGroup<Baba>();
 		_Murcielagos = new FlxTypedGroup<Murcielago>();
 		_Plataformas = new FlxTypedGroup<Plataforma>();
+		_Sols = new FlxTypedGroup<Soldado>();
 		FlxG.mouse.visible = false;
 		_Lazo = new Lazo();
 		//_GuiaCamara = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
@@ -79,6 +84,12 @@ class MenuState extends FlxState
 			}
 			FlxG.collide(_Suelo, personaje);
 			enemigosYPlataformasInteracciones();
+			if (FlxG.collide(personaje, _Baba)
+				Reg.vida -= 1;
+			else if (FlxG.collide(personaje, _Mur)
+				Reg.vida -= 1;
+			else if (FlxG.collide(personaje, _Sol)
+				Reg.vida -= 1;
 		}
 	}
 	public function posLazo(X:Float, Y:Float)
@@ -117,9 +128,9 @@ class MenuState extends FlxState
 				_Mur.loadGraphic(AssetPaths.bat__png, true, 13, 7);
 				_Mur.animation.add("vuela",	[0, 1], 4, true);
 				_Mur.animation.play("vuela");
-				_Plat.scale.set(2, 2);
-				_Plat.setSize(26, 14);
-				_Plat.centerOffsets();
+				_Mur.scale.set(2, 2);
+				_Mur.setSize(26, 14);
+				_Mur.centerOffsets();
 				_Murcielagos.add(_Mur);
 			case "plat":
 				_Plat = new Plataforma(x, y);
@@ -129,6 +140,15 @@ class MenuState extends FlxState
 				_Plat.centerOffsets();
 				_Plat.immovable = true;
 				_Plataformas.add(_Plat);
+			case "soldado":
+				_Sol = new Soldado(x, y);
+				_Sol.loadGraphic(AssetPaths.enemigoSoldado__png, true, 24, 46);
+				_Sol.animation.add("correI", [0, 1, 2, 3, 4], 5, true);
+				_Sol.animation.add("correD", [0, 1, 2, 3, 4], 5, true, true);
+				_Sol.animation.play("correI");
+				_Sols.add(_Sol);
+				
+			
 		}
 	}
 	private function enemigosYPlataformasInteracciones()
@@ -167,6 +187,22 @@ class MenuState extends FlxState
 		for (i in 0..._Plataformas.length)
 		{
 			FlxG.collide(personaje, _Plataformas.members[i]);			
+		}
+		for (i in 0..._Sols.length)
+		{
+			FlxG.collide(_Suelo, _Sols.members[i]);
+			if(_Sols.members[i].x < FlxG.camera.scroll.x + FlxG.camera.width && _Sols.members[i].x > FlxG.camera.scroll.x-_Sols.members[i].width)
+			{
+				if (!_Sols.members[i].alive && !_Sols.members[i].muerto)
+					_Sols.members[i].revive();
+			}
+			else if (_Sols.members[i].x > FlxG.camera.scroll.x + FlxG.camera.width || _Sols.members[i].x < FlxG.camera.scroll.x -_Sols.members[i].width && _Sols.members[i].alive)
+				_Sols.members[i].kill();
+			if (FlxG.collide(_Lazo, _Sols.members[i]))
+			{
+				_Sols.members[i].muerto = true;
+				_Sols.members[i].destroy();
+			}
 		}
 	}
 }
